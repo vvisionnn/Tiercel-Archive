@@ -33,6 +33,7 @@ class ListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate.sessionManager4.logger.option = .none
         
         receiveTaskSubscription = appDelegate.sessionManager4.tasksPublisher
             .sink { tasks in

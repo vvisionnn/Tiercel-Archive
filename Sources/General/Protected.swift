@@ -86,8 +86,6 @@ public final class Protected<T> {
 
     // MARK: Public
 
-    public var valuePublisher: AnyPublisher<T, Never> { $value.eraseToAnyPublisher() }
-
     public var wrappedValue: T {
         get { lock.around { value } }
         set { lock.around { value = newValue } }
@@ -108,7 +106,7 @@ public final class Protected<T> {
 
     private let lock = UnfairLock()
 
-    @Published private var value: T
+    private var value: T
 
 }
 

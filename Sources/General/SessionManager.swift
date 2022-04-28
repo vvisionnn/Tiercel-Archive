@@ -96,9 +96,7 @@ public class SessionManager {
     }
 
     public var tasksPublisher: AnyPublisher<[DownloadTask], Never> {
-        protectedState.valuePublisher
-            .map(\.tasks)
-            .eraseToAnyPublisher()
+        protectedState.wrappedValue.$tasks.eraseToAnyPublisher()
     }
 
     public var logger: Logable {
@@ -179,9 +177,9 @@ public class SessionManager {
 
     // MARK: Private
 
-    private struct State {
+    private class State {
         var logger: Logable
-        var isControlNetworkActivityIndicator = true
+        var isControlNetworkActivityIndicator: Bool
         var configuration: SessionConfiguration {
             didSet {
                 guard !shouldCreatSession else { return }
@@ -200,23 +198,67 @@ public class SessionManager {
         }
 
         var session: URLSession?
-        var shouldCreatSession = false
+        var shouldCreatSession: Bool
         var timer: DispatchSourceTimer?
-        var status: Status = .waiting
-        var tasks: [DownloadTask] = []
-        var taskMapper: [String: DownloadTask] = .init()
-        var urlMapper: [URL: URL] = .init()
-        var runningTasks: [DownloadTask] = []
-        var restartTasks: [DownloadTask] = []
-        var succeededTasks: [DownloadTask] = []
-        var speed: Int64 = 0
-        var timeRemaining: Int64 = 0
+        var status: Status
+        @Published var tasks: [DownloadTask]
+        var taskMapper: [String: DownloadTask]
+        var urlMapper: [URL: URL]
+        var runningTasks: [DownloadTask]
+        var restartTasks: [DownloadTask]
+        var succeededTasks: [DownloadTask]
+        var speed: Int64
+        var timeRemaining: Int64
 
         var progressExecuter: Executer<SessionManager>?
         var successExecuter: Executer<SessionManager>?
         var failureExecuter: Executer<SessionManager>?
         var completionExecuter: Executer<SessionManager>?
         var controlExecuter: Executer<SessionManager>?
+        
+        init(
+            logger: Logable,
+            configuration: SessionConfiguration,
+            isControlNetworkActivityIndicator: Bool = true,
+            session: URLSession? = nil,
+            shouldCreatSession: Bool = false,
+            timer: DispatchSourceTimer? = nil,
+            status: Status = .waiting,
+            tasks: [DownloadTask] = [],
+            taskMapper: [String: DownloadTask] = .init(),
+            urlMapper: [URL: URL] = .init(),
+            runningTasks: [DownloadTask] = [],
+            restartTasks: [DownloadTask] = [],
+            succeededTasks: [DownloadTask] = [],
+            speed: Int64 = 0,
+            timeRemaining: Int64 = 0,
+            progressExecuter: Executer<SessionManager>? = nil,
+            successExecuter: Executer<SessionManager>? = nil,
+            failureExecuter: Executer<SessionManager>? = nil,
+            completionExecuter: Executer<SessionManager>? = nil,
+            controlExecuter: Executer<SessionManager>? = nil
+        ) {
+            self.logger = logger
+            self.configuration = configuration
+            self.isControlNetworkActivityIndicator = isControlNetworkActivityIndicator
+            self.session = session
+            self.shouldCreatSession = shouldCreatSession
+            self.timer = timer
+            self.status = status
+            self.tasks = tasks
+            self.taskMapper = taskMapper
+            self.urlMapper = urlMapper
+            self.runningTasks = runningTasks
+            self.restartTasks = restartTasks
+            self.succeededTasks = succeededTasks
+            self.speed = speed
+            self.timeRemaining = timeRemaining
+            self.progressExecuter = progressExecuter
+            self.successExecuter = successExecuter
+            self.failureExecuter = failureExecuter
+            self.completionExecuter = completionExecuter
+            self.controlExecuter = controlExecuter
+        }
     }
 
     private let protectedState: Protected<State>
