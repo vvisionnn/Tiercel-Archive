@@ -42,6 +42,11 @@ class ListViewController: UITableViewController {
                 }
             }
     }
+    
+    @objc func taskCompleted(notification: Notification) {
+        guard let downloadTask = notification.userInfo?.values.first as? DownloadTask else { return }
+        debugPrint("\(downloadTask.fileName) completed")
+    }
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

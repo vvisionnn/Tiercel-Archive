@@ -9,8 +9,7 @@
 import Foundation
 
 extension CodingUserInfoKey {
+    static let cache = CodingUserInfoKey(rawValue: "com.libs.Tiercel.CodingUserInfoKey.cache")!
 
-    internal static let cache = CodingUserInfoKey(rawValue: "com.Tiercel.CodingUserInfoKey.cache")!
-
-    internal static let operationQueue = CodingUserInfoKey(rawValue: "com.Tiercel.CodingUserInfoKey.operationQueue")!
+    static let operationQueue = CodingUserInfoKey(rawValue: "com.libs.Tiercel.CodingUserInfoKey.operationQueue")!
 }

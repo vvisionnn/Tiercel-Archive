@@ -26,6 +26,7 @@
 
 import Foundation
 
+// MARK: - Double + TiercelCompatible
 
 extension Double: TiercelCompatible {}
 extension TiercelWrapper where Base == Double {
@@ -38,5 +39,4 @@ extension TiercelWrapper where Base == Double {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: date)
     }
-    
 }

@@ -24,16 +24,16 @@
 //  THE SOFTWARE.
 //
 
-
-import Foundation
 import Combine
+import Foundation
 
+// MARK: - UnfairLock
 
-final public class UnfairLock {
-    private let unfairLock: os_unfair_lock_t
+public final class UnfairLock {
+
+    // MARK: Lifecycle
 
     public init() {
-        
         unfairLock = .allocate(capacity: 1)
         unfairLock.initialize(to: os_unfair_lock())
     }
@@ -43,6 +43,22 @@ final public class UnfairLock {
         unfairLock.deallocate()
     }
 
+    // MARK: Public
+
+    public func around<T>(_ closure: () throws -> T) rethrows -> T {
+        lock(); defer { unlock() }
+        return try closure()
+    }
+
+    public func around(_ closure: () throws -> Void) rethrows {
+        lock(); defer { unlock() }
+        return try closure()
+    }
+
+    // MARK: Private
+
+    private let unfairLock: os_unfair_lock_t
+
     private func lock() {
         os_unfair_lock_lock(unfairLock)
     }
@@ -51,78 +67,80 @@ final public class UnfairLock {
         os_unfair_lock_unlock(unfairLock)
     }
 
-
-    public func around<T>(_ closure: () throws -> T) rethrows -> T {
-        lock(); defer { unlock() }
-        return try closure()
-    }
-
-    public func around(_ closure: () throws -> Void) rethrows -> Void {
-        lock(); defer { unlock() }
-        return try closure()
-    }
 }
 
-@propertyWrapper
-final public class Protected<T> {
-    
-    private let lock = UnfairLock()
-    
-    @Published private var value: T
-    
-    public var valuePublisher: AnyPublisher<T, Never> { $value.eraseToAnyPublisher() }
-    
-    public var wrappedValue: T {
-        get { lock.around { value } }
-        set { lock.around { value = newValue } }
-    }
-    
-    public var projectedValue: Protected<T> { self }
+// MARK: - Protected
 
+@propertyWrapper
+public final class Protected<T> {
+
+    // MARK: Lifecycle
 
     public init(_ value: T) {
         self.value = value
     }
-    
+
     public init(wrappedValue: T) {
         value = wrappedValue
     }
 
-    public func read<U>(_ closure: (T) throws -> U) rethrows -> U {
-        return try lock.around { try closure(self.value) }
+    // MARK: Public
+
+    public var valuePublisher: AnyPublisher<T, Never> { $value.eraseToAnyPublisher() }
+
+    public var wrappedValue: T {
+        get { lock.around { value } }
+        set { lock.around { value = newValue } }
     }
 
+    public var projectedValue: Protected<T> { self }
+
+    public func read<U>(_ closure: (T) throws -> U) rethrows -> U {
+        try lock.around { try closure(self.value) }
+    }
 
     @discardableResult
     public func write<U>(_ closure: (inout T) throws -> U) rethrows -> U {
-        return try lock.around { try closure(&self.value) }
+        try lock.around { try closure(&self.value) }
     }
+
+    // MARK: Private
+
+    private let lock = UnfairLock()
+
+    @Published private var value: T
+
 }
 
-final public class Debouncer {
-    
-    private let lock = UnfairLock()
-    
-    private let queue: DispatchQueue
-    
-    @Protected
-    private var workItems = [String: DispatchWorkItem]()
-    
+// MARK: - Debouncer
+
+public final class Debouncer {
+
+    // MARK: Lifecycle
+
     public init(queue: DispatchQueue) {
         self.queue = queue
     }
-    
-    
+
+    // MARK: Public
+
     public func execute(label: String, deadline: DispatchTime, execute work: @escaping @convention(block) () -> Void) {
         execute(label: label, time: deadline, execute: work)
     }
-    
-    
+
     public func execute(label: String, wallDeadline: DispatchWallTime, execute work: @escaping @convention(block) () -> Void) {
         execute(label: label, time: wallDeadline, execute: work)
     }
-    
-    
+
+    // MARK: Private
+
+    private let lock = UnfairLock()
+
+    private let queue: DispatchQueue
+
+    @Protected
+    private var workItems = [String: DispatchWorkItem]()
+
     private func execute<T: Comparable>(label: String, time: T, execute work: @escaping @convention(block) () -> Void) {
         lock.around {
             workItems[label]?.cancel()
@@ -140,42 +158,48 @@ final public class Debouncer {
     }
 }
 
-final public class Throttler {
-    
-    private let lock = UnfairLock()
-    
-    private let queue: DispatchQueue
-    
-    private var workItems = [String: DispatchWorkItem]()
-    
-    private let latest: Bool
-    
+// MARK: - Throttler
+
+public final class Throttler {
+
+    // MARK: Lifecycle
+
     public init(queue: DispatchQueue, latest: Bool) {
         self.queue = queue
         self.latest = latest
     }
-    
-    
+
+    // MARK: Public
+
     public func execute(label: String, deadline: DispatchTime, execute work: @escaping @convention(block) () -> Void) {
         execute(label: label, time: deadline, execute: work)
     }
-    
-    
+
     public func execute(label: String, wallDeadline: DispatchWallTime, execute work: @escaping @convention(block) () -> Void) {
         execute(label: label, time: wallDeadline, execute: work)
     }
-    
+
+    // MARK: Private
+
+    private let lock = UnfairLock()
+
+    private let queue: DispatchQueue
+
+    private var workItems = [String: DispatchWorkItem]()
+
+    private let latest: Bool
+
     private func execute<T: Comparable>(label: String, time: T, execute work: @escaping @convention(block) () -> Void) {
         lock.around {
             let workItem = workItems[label]
-            
+
             guard workItem == nil || latest else { return }
             workItem?.cancel()
             workItems[label] = DispatchWorkItem { [weak self] in
                 self?.workItems.removeValue(forKey: label)
                 work()
             }
-            
+
             guard workItem == nil else { return }
             if let time = time as? DispatchTime {
                 queue.asyncAfter(deadline: time) { [weak self] in
@@ -189,5 +213,3 @@ final public class Throttler {
         }
     }
 }
-
-

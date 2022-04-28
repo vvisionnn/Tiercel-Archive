@@ -26,13 +26,9 @@
 
 import Foundation
 
-
 extension Array {
     public func safeObject(at index: Int) -> Element? {
-        if (0..<count).contains(index) {
-            return self[index]
-        } else {
-            return nil
-        }
+        guard index >= 0, index < count else { return nil }
+        return self[index]
     }
 }

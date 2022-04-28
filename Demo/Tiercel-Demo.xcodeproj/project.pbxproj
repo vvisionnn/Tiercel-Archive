@@ -362,7 +362,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Daniels.Tiercel-iOS-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.libs.Tiercel-iOS-Demo";
 				PRODUCT_NAME = "Tiercel-iOS-Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -381,7 +381,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Daniels.Tiercel-iOS-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.libs.Tiercel-iOS-Demo";
 				PRODUCT_NAME = "Tiercel-iOS-Demo";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

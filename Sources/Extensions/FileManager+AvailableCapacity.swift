@@ -26,14 +26,18 @@
 
 import Foundation
 
+// MARK: - FileManager + TiercelCompatible
+
 extension FileManager: TiercelCompatible {}
 extension TiercelWrapper where Base: FileManager {
     public var freeDiskSpaceInBytes: Int64 {
-        if let space = try? URL(fileURLWithPath: NSHomeDirectory()).resourceValues(forKeys: [URLResourceKey.volumeAvailableCapacityForImportantUsageKey]).volumeAvailableCapacityForImportantUsage {
+        if
+            let space = try? URL(fileURLWithPath: NSHomeDirectory())
+                .resourceValues(forKeys: [URLResourceKey.volumeAvailableCapacityForImportantUsageKey])
+                .volumeAvailableCapacityForImportantUsage {
             return space
         } else {
             return 0
         }
     }
 }
-

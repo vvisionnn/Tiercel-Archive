@@ -26,18 +26,16 @@
 
 import Foundation
 
-
 internal enum ResumeDataHelper {
-    
     static let infoVersionKey = "NSURLSessionResumeInfoVersion"
     static let infoTempFileNameKey = "NSURLSessionResumeInfoTempFileName"
     static let infoLocalPathKey = "NSURLSessionResumeInfoLocalPath"
     static let archiveRootObjectKey = "NSKeyedArchiveRootObjectKey"
-    
+
     internal static func handleResumeData(_ data: Data) -> Data? {
-        return data
+        data
     }
-    
+
     /// 把resumeData解析成字典
     ///
     /// - Parameter data:
@@ -47,14 +45,14 @@ internal enum ResumeDataHelper {
         var object: NSDictionary?
 
         do {
-            let keyedUnarchiver = try NSKeyedUnarchiver.init(forReadingFrom: data)
+            let keyedUnarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
             object = try keyedUnarchiver.decodeTopLevelObject(of: NSDictionary.self, forKey: archiveRootObjectKey)
             if object == nil {
                 object = try keyedUnarchiver.decodeTopLevelObject(of: NSDictionary.self, forKey: NSKeyedArchiveRootObjectKey)
             }
             keyedUnarchiver.finishDecoding()
         } catch {}
-        
+
         if object == nil {
             do {
                 object = try PropertyListSerialization.propertyList(
@@ -63,20 +61,20 @@ internal enum ResumeDataHelper {
                     format: nil) as? NSDictionary
             } catch {}
         }
-        
+
         if let resumeDictionary = object as? NSMutableDictionary {
             return resumeDictionary
         }
-        
+
         guard let resumeDictionary = object else { return nil }
         return NSMutableDictionary(dictionary: resumeDictionary)
-
     }
-    
+
     internal static func getTmpFileName(_ data: Data) -> String? {
-        guard let resumeDictionary = ResumeDataHelper.getResumeDictionary(data),
+        guard
+            let resumeDictionary = ResumeDataHelper.getResumeDictionary(data),
             let version = resumeDictionary[infoVersionKey] as? Int
-            else { return nil }
+        else { return nil }
         if version > 1 {
             return resumeDictionary[infoTempFileNameKey] as? String
         } else {
@@ -86,11 +84,3 @@ internal enum ResumeDataHelper {
         }
     }
 }
-
-
-
-
-
-
-
-

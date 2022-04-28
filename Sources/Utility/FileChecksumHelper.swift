@@ -26,31 +26,31 @@
 
 import Foundation
 
+// MARK: - FileChecksumHelper
 
 public enum FileChecksumHelper {
-    
-    public enum VerificationType : Int {
+
+    // MARK: Public
+
+    public enum VerificationType: Int {
         case md5
         case sha1
         case sha256
         case sha512
     }
-    
+
     public enum FileVerificationError: Error {
         case codeEmpty
         case codeMismatch(code: String)
         case fileDoesnotExist(path: String)
         case readDataFailed(path: String)
     }
-    
-    private static let ioQueue: DispatchQueue = DispatchQueue(label: "com.Tiercel.FileChecksumHelper.ioQueue",
-                                                              attributes: .concurrent)
-    
-    
-    public static func validateFile(_ filePath: String,
-                                   code: String,
-                                   type: VerificationType,
-                                   completion: @escaping (Result<Bool, FileVerificationError>) -> ()) {
+
+    public static func validateFile(
+        _ filePath: String,
+        code: String,
+        type: VerificationType,
+        completion: @escaping (Result<Bool, FileVerificationError>) -> Void) {
         if code.isEmpty {
             completion(.failure(FileVerificationError.codeEmpty))
             return
@@ -86,24 +86,28 @@ public enum FileChecksumHelper {
             }
         }
     }
+
+    // MARK: Private
+
+    private static let ioQueue: DispatchQueue = .init(
+        label: "com.libs.Tiercel.FileChecksumHelper.ioQueue",
+        attributes: .concurrent)
+
 }
 
-
+// MARK: - FileChecksumHelper.FileVerificationError + LocalizedError
 
 extension FileChecksumHelper.FileVerificationError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .codeEmpty:
             return "verification code is empty"
-        case let .codeMismatch(code):
+        case .codeMismatch(let code):
             return "verification code mismatch, code: \(code)"
-        case let .fileDoesnotExist(path):
+        case .fileDoesnotExist(let path):
             return "file does not exist, path: \(path)"
-        case let .readDataFailed(path):
+        case .readDataFailed(let path):
             return "read data failed, path: \(path)"
         }
     }
-
 }
-
-

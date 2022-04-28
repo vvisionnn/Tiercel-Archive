@@ -26,11 +26,14 @@
 
 import Foundation
 
+// MARK: - LogOption
 
 public enum LogOption {
     case `default`
     case none
 }
+
+// MARK: - LogType
 
 public enum LogType {
     case sessionManager(_ message: String, manager: SessionManager)
@@ -38,34 +41,37 @@ public enum LogType {
     case error(_ message: String, error: Error)
 }
 
+// MARK: - Logable
+
 public protocol Logable {
     var identifier: String { get }
-    
+
     var option: LogOption { get set }
-    
+
     func log(_ type: LogType)
 }
 
-public struct Logger: Logable {
-    
+// MARK: - DefaultLogger
+
+public struct DefaultLogger: Logable {
     public let identifier: String
-    
+
     public var option: LogOption
-    
+
     public func log(_ type: LogType) {
         guard option == .default else { return }
-        var strings = ["************************ TiercelLog ************************"]
+        var strings = [String]()
         strings.append("identifier    :  \(identifier)")
         switch type {
-        case let .sessionManager(message, manager):
+        case .sessionManager(let message, let manager):
             strings.append("Message       :  [SessionManager] \(message), tasks.count: \(manager.tasks.count)")
-        case let .downloadTask(message, task):
+        case .downloadTask(let message, let task):
             strings.append("Message       :  [DownloadTask] \(message)")
             strings.append("Task URL      :  \(task.url.absoluteString)")
             if let error = task.error, task.status == .failed {
                 strings.append("Error         :  \(error)")
             }
-        case let .error(message, error):
+        case .error(let message, let error):
             strings.append("Message       :  [Error] \(message)")
             strings.append("Description   :  \(error)")
         }
@@ -73,6 +79,8 @@ public struct Logger: Logable {
         print(strings.joined(separator: "\n"))
     }
 }
+
+// MARK: - Status
 
 public enum Status: String {
     case waiting
@@ -88,6 +96,8 @@ public enum Status: String {
     case willRemove
 }
 
+// MARK: - TiercelWrapper
+
 public struct TiercelWrapper<Base> {
     internal let base: Base
     internal init(_ base: Base) {
@@ -95,17 +105,13 @@ public struct TiercelWrapper<Base> {
     }
 }
 
+// MARK: - TiercelCompatible
 
-public protocol TiercelCompatible {
-
-}
+public protocol TiercelCompatible {}
 
 extension TiercelCompatible {
-    public var tr: TiercelWrapper<Self> {
-        get { TiercelWrapper(self) }
-    }
-    public static var tr: TiercelWrapper<Self>.Type {
-        get { TiercelWrapper<Self>.self }
-    }
-}
+    public static var tr: TiercelWrapper<Self>.Type { TiercelWrapper<Self>.self }
 
+    public var tr: TiercelWrapper<Self> { TiercelWrapper(self) }
+
+}

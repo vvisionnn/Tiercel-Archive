@@ -26,8 +26,21 @@
 
 import Foundation
 
+// MARK: - TiercelError
+
 public enum TiercelError: Error {
-        
+    case unknown
+    case invalidURL(url: URLConvertible)
+    case duplicateURL(url: URLConvertible)
+    case indexOutOfRange
+    case fetchDownloadTaskFailed(url: URLConvertible)
+    case headersMatchFailed
+    case fileNamesMatchFailed
+    case unacceptableStatusCode(code: Int)
+    case cacheError(reason: CacheErrorReason)
+
+    // MARK: Public
+
     public enum CacheErrorReason {
         case cannotCreateDirectory(path: String, error: Error)
         case cannotRemoveItem(path: String, error: Error)
@@ -38,46 +51,40 @@ public enum TiercelError: Error {
         case fileDoesnotExist(path: String)
         case readDataFailed(path: String)
     }
-    
-    case unknown
-    case invalidURL(url: URLConvertible)
-    case duplicateURL(url: URLConvertible)
-    case indexOutOfRange
-    case fetchDownloadTaskFailed(url: URLConvertible)
-    case headersMatchFailed
-    case fileNamesMatchFailed
-    case unacceptableStatusCode(code: Int)
-    case cacheError(reason: CacheErrorReason)
+
 }
+
+// MARK: LocalizedError
 
 extension TiercelError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unknown:
             return "unkown error"
-        case let .invalidURL(url):
+        case .invalidURL(let url):
             return "URL is not valid: \(url)"
-        case let .duplicateURL(url):
+        case .duplicateURL(let url):
             return "URL is duplicate: \(url)"
         case .indexOutOfRange:
             return "index out of range"
-        case let .fetchDownloadTaskFailed(url):
+        case .fetchDownloadTaskFailed(let url):
             return "did not find downloadTask in sessionManager: \(url)"
         case .headersMatchFailed:
             return "HeaderArray.count != urls.count"
         case .fileNamesMatchFailed:
             return "FileNames.count != urls.count"
-        case let .unacceptableStatusCode(code):
+        case .unacceptableStatusCode(let code):
             return "Response status code was unacceptable: \(code)"
-        case let .cacheError(reason):
+        case .cacheError(let reason):
             return reason.errorDescription
         }
     }
 }
 
+// MARK: CustomNSError
+
 extension TiercelError: CustomNSError {
-    
-    public static let errorDomain: String = "com.Daniels.Tiercel.Error"
+    public static let errorDomain = "com.libs.Tiercel.Error"
 
     public var errorCode: Int {
         if case .unacceptableStatusCode = self {
@@ -93,35 +100,28 @@ extension TiercelError: CustomNSError {
         } else {
             return [String: Any]()
         }
-        
     }
 }
 
 extension TiercelError.CacheErrorReason {
-    
     public var errorDescription: String? {
         switch self {
-        case let .cannotCreateDirectory(path, error):
+        case .cannotCreateDirectory(let path, let error):
             return "can not create directory, path: \(path), underlying: \(error)"
-        case let .cannotRemoveItem(path, error):
+        case .cannotRemoveItem(let path, let error):
             return "can not remove item, path: \(path), underlying: \(error)"
-        case let .cannotCopyItem(atPath, toPath, error):
+        case .cannotCopyItem(let atPath, let toPath, let error):
             return "can not copy item, atPath: \(atPath), toPath: \(toPath), underlying: \(error)"
-        case let .cannotMoveItem(atPath, toPath, error):
+        case .cannotMoveItem(let atPath, let toPath, let error):
             return "can not move item atPath: \(atPath), toPath: \(toPath), underlying: \(error)"
-        case let .cannotRetrieveAllTasks(path, error):
+        case .cannotRetrieveAllTasks(let path, let error):
             return "can not retrieve all tasks, path: \(path), underlying: \(error)"
-        case let .cannotEncodeTasks(path, error):
+        case .cannotEncodeTasks(let path, let error):
             return "can not encode tasks, path: \(path), underlying: \(error)"
-        case let .fileDoesnotExist(path):
+        case .fileDoesnotExist(let path):
             return "file does not exist, path: \(path)"
-        case let .readDataFailed(path):
+        case .readDataFailed(let path):
             return "read data failed, path: \(path)"
         }
     }
-
-    
 }
-
-
-

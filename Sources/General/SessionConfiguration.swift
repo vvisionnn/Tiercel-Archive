@@ -27,15 +27,23 @@
 import Foundation
 
 public struct SessionConfiguration {
+
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
     // 请求超时时间
     public var timeoutIntervalForRequest: TimeInterval = 60.0
-    
-    private static var MaxConcurrentTasksLimit: Int = {
-        return 6
-    }()
 
-    // 最大并发数
-    private var _maxConcurrentTasksLimit: Int = MaxConcurrentTasksLimit
+    public var allowsExpensiveNetworkAccess = true
+
+    public var allowsConstrainedNetworkAccess = true
+
+    // 是否允许蜂窝网络下载
+    public var allowsCellularAccess = false
+
     public var maxConcurrentTasksLimit: Int {
         get { _maxConcurrentTasksLimit }
         set {
@@ -43,18 +51,11 @@ public struct SessionConfiguration {
             _maxConcurrentTasksLimit = max(limit, 1)
         }
     }
-        
-    public var allowsExpensiveNetworkAccess: Bool = true
 
+    // MARK: Private
 
-    public var allowsConstrainedNetworkAccess: Bool = true
+    private static var MaxConcurrentTasksLimit = 6
 
-    // 是否允许蜂窝网络下载
-    public var allowsCellularAccess: Bool = false
-
-    public init() {
-
-    }
+    // 最大并发数
+    private var _maxConcurrentTasksLimit: Int = MaxConcurrentTasksLimit
 }
-
-

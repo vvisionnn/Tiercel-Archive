@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configuration.allowsCellularAccess = true
         let path = Cache.defaultDiskCachePathClosure("Test")
         let cacahe = Cache("ViewController2", downloadPath: path)
-        let manager = SessionManager("ViewController2", configuration: configuration, cache: cacahe, operationQueue: DispatchQueue(label: "com.Tiercel.SessionManager.operationQueue"))
+        let manager = SessionManager("ViewController2", configuration: configuration, cache: cacahe, operationQueue: DispatchQueue(label: "com.libs.Tiercel.SessionManager.operationQueue"))
         return manager
     }()
     
@@ -31,10 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let sessionManager4 = SessionManager("ViewController4", configuration: SessionConfiguration())
 
-    
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+        sessionManager4.logger.option = .none
         return true
     }
 

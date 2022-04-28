@@ -26,17 +26,20 @@
 
 import Foundation
 
-public typealias Handler<T> = (T) -> ()
+public typealias Handler<T> = (T) -> Void
+
+// MARK: - Executer
 
 public class Executer<T> {
-    private let onMainQueue: Bool
-    private let handler: Handler<T>?
+
+    // MARK: Lifecycle
 
     public init(onMainQueue: Bool = true, handler: Handler<T>?) {
         self.onMainQueue = onMainQueue
         self.handler = handler
     }
-    
+
+    // MARK: Public
 
     public func execute(_ object: T) {
         if let handler = handler {
@@ -49,4 +52,10 @@ public class Executer<T> {
             }
         }
     }
+
+    // MARK: Private
+
+    private let onMainQueue: Bool
+    private let handler: Handler<T>?
+
 }
