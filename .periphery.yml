@@ -1,0 +1,6 @@
+retain_public: true
+schemes:
+- Tiercel
+targets:
+- Tiercel
+workspace: Tiercel.xcworkspace

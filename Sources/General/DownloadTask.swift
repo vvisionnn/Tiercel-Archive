@@ -121,11 +121,7 @@ public class DownloadTask: Task<DownloadTask> {
         try container.encodeIfPresent(resumeData, forKey: .resumeData)
         if let response = response {
             let responseData: Data
-            if #available(iOS 11.0, *) {
-                responseData = try NSKeyedArchiver.archivedData(withRootObject: (response as HTTPURLResponse), requiringSecureCoding: true)
-            } else {
-                responseData = NSKeyedArchiver.archivedData(withRootObject: (response as HTTPURLResponse))
-            }
+            responseData = try NSKeyedArchiver.archivedData(withRootObject: (response as HTTPURLResponse), requiringSecureCoding: true)
             try container.encode(responseData, forKey: .response)
         }
     }
@@ -136,11 +132,7 @@ public class DownloadTask: Task<DownloadTask> {
         try super.init(from: superDecoder)
         resumeData = try container.decodeIfPresent(Data.self, forKey: .resumeData)
         if let responseData = try container.decodeIfPresent(Data.self, forKey: .response) {
-            if #available(iOS 11.0, *) {
-                response = try? NSKeyedUnarchiver.unarchivedObject(ofClass: HTTPURLResponse.self, from: responseData)
-            } else {
-                response = NSKeyedUnarchiver.unarchiveObject(with: responseData) as? HTTPURLResponse
-            }
+            response = try? NSKeyedUnarchiver.unarchivedObject(ofClass: HTTPURLResponse.self, from: responseData)
         }
     }
     
@@ -223,13 +215,6 @@ extension DownloadTask {
             if let resumeData = resumeData,
                 cache.retrieveTmpFile(tmpFileName) {
                 sessionTask = session?.downloadTask(withResumeData: resumeData)
-//                if #available(iOS 10.2, *) {
-//                    sessionTask = session?.downloadTask(withResumeData: resumeData)
-//                } else if #available(iOS 10.0, *) {
-//                    sessionTask = session?.correctedDownloadTask(withResumeData: resumeData)
-//                } else {
-//                    sessionTask = session?.downloadTask(withResumeData: resumeData)
-//                }
             } else {
                 var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 0)
                 if let headers = headers {

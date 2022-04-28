@@ -274,10 +274,10 @@ public class SessionManager {
         sessionConfiguration.timeoutIntervalForRequest = configuration.timeoutIntervalForRequest
         sessionConfiguration.httpMaximumConnectionsPerHost = 100000
         sessionConfiguration.allowsCellularAccess = configuration.allowsCellularAccess
-        if #available(iOS 13, macOS 10.15, *) {
-            sessionConfiguration.allowsConstrainedNetworkAccess = configuration.allowsConstrainedNetworkAccess
-            sessionConfiguration.allowsExpensiveNetworkAccess = configuration.allowsExpensiveNetworkAccess
-        }
+        
+        sessionConfiguration.allowsConstrainedNetworkAccess = configuration.allowsConstrainedNetworkAccess
+        sessionConfiguration.allowsExpensiveNetworkAccess = configuration.allowsExpensiveNetworkAccess
+        
         let sessionDelegate = SessionDelegate()
         sessionDelegate.manager = self
         let delegateQueue = OperationQueue(maxConcurrentOperationCount: 1,

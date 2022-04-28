@@ -41,9 +41,6 @@ class ListViewController: UITableViewController {
                     debugPrint("[\(task.status)] \(task.fileName) - \(task.speedString)")
                 }
             }
-        
-        debugPrint(receiveTaskSubscription)
-        debugPrint("done")
     }
 
 

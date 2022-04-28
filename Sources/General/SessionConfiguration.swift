@@ -31,11 +31,7 @@ public struct SessionConfiguration {
     public var timeoutIntervalForRequest: TimeInterval = 60.0
     
     private static var MaxConcurrentTasksLimit: Int = {
-        if #available(iOS 11.0, *) {
-            return 6
-        } else {
-            return 3
-        }
+        return 6
     }()
 
     // 最大并发数
