@@ -157,6 +157,11 @@ public class Task<TaskType>: NSObject, Codable {
         get { protectedState.wrappedValue.error }
         set { protectedState.write { $0.error = newValue } }
     }
+    
+    public var context: AnyObject? {
+        get { protectedState.wrappedValue.context }
+        set { protectedState.write { $0.context = newValue } }
+    }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -206,6 +211,8 @@ public class Task<TaskType>: NSObject, Codable {
         var fileName: String
         var timeRemaining: Int64 = 0
         var error: Error?
+        
+        var context: AnyObject? = nil
 
         var progressExecuter: Executer<TaskType>?
         var successExecuter: Executer<TaskType>?

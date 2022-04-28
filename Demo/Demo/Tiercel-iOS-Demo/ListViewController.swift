@@ -11,6 +11,14 @@ import Tiercel
 import Combine
 
 class ListViewController: UITableViewController {
+    
+    class TestObject: NSObject {
+        var content: String
+        
+        init(content: String) {
+            self.content = content
+        }
+    }
 
 
     lazy var URLStrings: [String] = {
@@ -39,16 +47,11 @@ class ListViewController: UITableViewController {
             .sink { tasks in
                 debugPrint(tasks.count)
                 tasks.forEach { task in
-                    debugPrint("[\(task.status)] \(task.fileName) - \(task.speedString)")
+                    guard let obj = task.context as? TestObject else { return }
+                    debugPrint("[\(task.status)] [\(obj.content)] \(task.fileName) - \(task.speedString)")
                 }
             }
     }
-    
-    @objc func taskCompleted(notification: Notification) {
-        guard let downloadTask = notification.userInfo?.values.first as? DownloadTask else { return }
-        debugPrint("\(downloadTask.fileName) completed")
-    }
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return URLStrings.count
@@ -60,7 +63,7 @@ class ListViewController: UITableViewController {
         cell.URLStringLabel.text = "文件\(indexPath.row + 1).mp4"
         let URLStirng = URLStrings[indexPath.row]
         cell.downloadClosure = { cell in
-            appDelegate.sessionManager4.download(URLStirng, fileName: cell.URLStringLabel.text)
+            appDelegate.sessionManager4.download(URLStirng, fileName: cell.URLStringLabel.text, context: TestObject(content: "123"))
         }
 
         return cell

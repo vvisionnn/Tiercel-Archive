@@ -359,6 +359,7 @@ extension SessionManager {
         _ url: URLConvertible,
         headers: [String: String]? = nil,
         fileName: String? = nil,
+        context: AnyObject? = nil,
         onMainQueue: Bool = true,
         handler: Handler<DownloadTask>? = nil)
         -> DownloadTask? {
@@ -374,6 +375,7 @@ extension SessionManager {
                         validURL,
                         headers: headers,
                         fileName: fileName,
+                        context: context,
                         cache: cache,
                         operationQueue: operationQueue)
                     task.manager = self

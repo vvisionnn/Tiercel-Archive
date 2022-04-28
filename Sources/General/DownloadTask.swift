@@ -36,13 +36,17 @@ public class DownloadTask: Task<DownloadTask> {
         _ url: URL,
         headers: [String: String]? = nil,
         fileName: String? = nil,
+        context: AnyObject? = nil,
         cache: Cache,
-        operationQueue: DispatchQueue) {
+        operationQueue: DispatchQueue
+    ) {
         super.init(
             url,
             headers: headers,
             cache: cache,
             operationQueue: operationQueue)
+        
+        self.context = context
         if let fileName = fileName, !fileName.isEmpty {
             self.fileName = fileName
         }
