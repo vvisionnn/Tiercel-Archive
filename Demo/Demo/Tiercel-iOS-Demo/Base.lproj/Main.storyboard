@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iG0-iW-aYF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iG0-iW-aYF">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +35,7 @@
                             <tableViewSection id="Szq-0G-Vnq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="etb-O0-O59">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="etb-O0-O59" id="n5Y-Z7-1dG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -59,7 +58,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="swj-U4-DVA">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="88.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="swj-U4-DVA" id="aEE-U0-rJm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -82,7 +81,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BCs-zD-K18">
-                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="132.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BCs-zD-K18" id="Ega-Fr-AX5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -105,7 +104,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FgX-dL-y49">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="176.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FgX-dL-y49" id="On7-zn-qqv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -144,86 +143,87 @@
         <!--View Controller1-->
         <scene sceneID="qBW-vF-vcc">
             <objects>
-                <viewController id="hzf-Gg-ctm" customClass="ViewController1" customModule="Tiercel_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hzf-Gg-ctm" customClass="ViewController1" customModule="Tiercel_iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fEk-Fh-2vy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Pv-Mds">
-                                <rect key="frame" x="40" y="84" width="295" height="2"/>
+                                <rect key="frame" x="40" y="84" width="295" height="4"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress：0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-fN-GF4">
-                                <rect key="frame" x="40" y="147" width="295" height="21"/>
+                                <rect key="frame" x="40" y="149" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-6d-l2K">
-                                <rect key="frame" x="172" y="401.5" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-6d-l2K">
+                                <rect key="frame" x="172" y="403.5" width="31" height="30"/>
                                 <state key="normal" title="暂停"/>
                                 <connections>
                                     <action selector="suspend:" destination="hzf-Gg-ctm" eventType="touchUpInside" id="9eK-ae-QEw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-IS-nau">
-                                <rect key="frame" x="172" y="451.5" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-IS-nau">
+                                <rect key="frame" x="172" y="453.5" width="31" height="30"/>
                                 <state key="normal" title="取消"/>
                                 <connections>
                                     <action selector="cancel:" destination="hzf-Gg-ctm" eventType="touchUpInside" id="Zc2-sy-WyS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c01-JJ-8FR">
-                                <rect key="frame" x="156.5" y="501.5" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c01-JJ-8FR">
+                                <rect key="frame" x="156.5" y="503.5" width="62" height="30"/>
                                 <state key="normal" title="删除任务"/>
                                 <connections>
                                     <action selector="deleteTask:" destination="hzf-Gg-ctm" eventType="touchUpInside" id="TCE-8s-xm7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="speed：0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gX-3V-RgC">
-                                <rect key="frame" x="40" y="106" width="295" height="21"/>
+                                <rect key="frame" x="40" y="108" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN5-Ez-WZe">
-                                <rect key="frame" x="156.5" y="551.5" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN5-Ez-WZe">
+                                <rect key="frame" x="156.5" y="553.5" width="62" height="30"/>
                                 <state key="normal" title="清空缓存"/>
                                 <connections>
                                     <action selector="clearDisk:" destination="hzf-Gg-ctm" eventType="touchUpInside" id="ewl-Cg-f5x"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU1-qf-Vnk">
-                                <rect key="frame" x="40" y="188" width="295" height="21"/>
+                                <rect key="frame" x="40" y="190" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhb-85-4ul">
-                                <rect key="frame" x="40" y="229" width="295" height="21"/>
+                                <rect key="frame" x="40" y="231" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PX-Ns-upn">
-                                <rect key="frame" x="40" y="270" width="295" height="21"/>
+                                <rect key="frame" x="40" y="272" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文件验证：未知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOK-3f-1A2">
-                                <rect key="frame" x="40" y="311" width="295" height="20.5"/>
+                                <rect key="frame" x="40" y="313" width="295" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHD-Al-lEb">
-                                <rect key="frame" x="172" y="351.5" width="31" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHD-Al-lEb">
+                                <rect key="frame" x="172" y="353.5" width="31" height="30"/>
                                 <state key="normal" title="开始"/>
                                 <connections>
                                     <action selector="start:" destination="hzf-Gg-ctm" eventType="touchUpInside" id="ZnK-dm-JDR"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="FMW-jU-Tcr"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kOK-3f-1A2" firstAttribute="top" secondItem="3PX-Ns-upn" secondAttribute="bottom" constant="20" id="1Qb-FL-caI"/>
@@ -259,7 +259,6 @@
                             <constraint firstItem="mSJ-IS-nau" firstAttribute="top" secondItem="wLD-6d-l2K" secondAttribute="bottom" constant="20" id="tFy-Sp-Zld"/>
                             <constraint firstItem="TU1-qf-Vnk" firstAttribute="top" secondItem="hgA-fN-GF4" secondAttribute="bottom" constant="20" id="znE-xC-o1g"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FMW-jU-Tcr"/>
                     </view>
                     <connections>
                         <outlet property="endDateLabel" destination="3PX-Ns-upn" id="ruD-NJ-Uvb"/>
@@ -296,14 +295,14 @@
         <!--List View Controller-->
         <scene sceneID="GKI-k7-WFW">
             <objects>
-                <tableViewController id="OQp-GJ-mes" customClass="ListViewController" customModule="Tiercel_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OQp-GJ-mes" customClass="ListViewController" customModule="Tiercel_iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5Tg-ts-YaN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="xrT-VF-286" customClass="ListViewCell" customModule="Tiercel_Demo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="xrT-VF-286" customClass="ListViewCell" customModule="Tiercel_iOS_Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xrT-VF-286" id="wKO-lA-kkM">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -315,7 +314,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnD-xl-xc8">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnD-xl-xc8">
                                             <rect key="frame" x="329" y="7" width="31" height="30"/>
                                             <state key="normal" title="下载"/>
                                             <connections>
@@ -350,7 +349,7 @@
         <!--View Controller3-->
         <scene sceneID="spu-eN-Uq5">
             <objects>
-                <viewController id="WS1-bt-7kH" customClass="ViewController3" customModule="Tiercel_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WS1-bt-7kH" customClass="ViewController3" customModule="Tiercel_iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V4z-Af-sCC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,7 +373,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18D-jn-Xo3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18D-jn-Xo3">
                                         <rect key="frame" x="15" y="76" width="62" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="全部开始"/>
@@ -382,21 +381,21 @@
                                             <action selector="totalStart:" destination="WS1-bt-7kH" eventType="touchUpInside" id="hbZ-bS-2ik"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-0T-POU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hb-0T-POU">
                                         <rect key="frame" x="15" y="116" width="62" height="30"/>
                                         <state key="normal" title="全部暂停"/>
                                         <connections>
                                             <action selector="totalSuspend:" destination="WS1-bt-7kH" eventType="touchUpInside" id="GCs-5J-pgp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0C-Sf-BAc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0C-Sf-BAc">
                                         <rect key="frame" x="15" y="156" width="62" height="30"/>
                                         <state key="normal" title="全部取消"/>
                                         <connections>
                                             <action selector="totalCancel:" destination="WS1-bt-7kH" eventType="touchUpInside" id="zs2-Bb-dEP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m43-JT-8ko">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m43-JT-8ko">
                                         <rect key="frame" x="97" y="76" width="62" height="30"/>
                                         <state key="normal" title="全部删除"/>
                                         <connections>
@@ -409,14 +408,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkR-GN-fMX">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkR-GN-fMX">
                                         <rect key="frame" x="97" y="116" width="62" height="30"/>
                                         <state key="normal" title="清除文件"/>
                                         <connections>
                                             <action selector="clearDisk:" destination="WS1-bt-7kH" eventType="touchUpInside" id="OPo-24-bhL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdy-9T-ftu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdy-9T-ftu">
                                         <rect key="frame" x="268" y="76" width="92" height="30"/>
                                         <state key="normal" title="批量添加下载"/>
                                         <connections>
@@ -490,6 +489,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="YKX-5x-NJz"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UJ6-RT-Vgd" firstAttribute="top" secondItem="6RR-yd-RCD" secondAttribute="bottom" id="9Yd-lM-RdJ"/>
@@ -500,7 +500,6 @@
                             <constraint firstAttribute="bottom" secondItem="UJ6-RT-Vgd" secondAttribute="bottom" id="aHd-8e-TCK"/>
                             <constraint firstItem="YKX-5x-NJz" firstAttribute="trailing" secondItem="UJ6-RT-Vgd" secondAttribute="trailing" id="eYP-Uv-ZIV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="YKX-5x-NJz"/>
                     </view>
                     <connections>
                         <outlet property="cellularAccessSwitch" destination="137-XH-Aih" id="zjZ-YJ-biG"/>
@@ -519,7 +518,7 @@
         <!--View Controller2-->
         <scene sceneID="dgf-g9-GoM">
             <objects>
-                <viewController id="wVe-jT-pWR" customClass="ViewController2" customModule="Tiercel_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wVe-jT-pWR" customClass="ViewController2" customModule="Tiercel_iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iy7-XT-TNE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,7 +542,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-8G-b4t">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-8G-b4t">
                                         <rect key="frame" x="15" y="76" width="62" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="全部开始"/>
@@ -551,35 +550,35 @@
                                             <action selector="totalStart:" destination="wVe-jT-pWR" eventType="touchUpInside" id="5Ti-RU-CmW"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVS-zE-nIi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVS-zE-nIi">
                                         <rect key="frame" x="15" y="116" width="62" height="30"/>
                                         <state key="normal" title="全部暂停"/>
                                         <connections>
                                             <action selector="totalSuspend:" destination="wVe-jT-pWR" eventType="touchUpInside" id="cv6-E4-Bpm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iad-QJ-EZD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iad-QJ-EZD">
                                         <rect key="frame" x="15" y="156" width="62" height="30"/>
                                         <state key="normal" title="全部取消"/>
                                         <connections>
                                             <action selector="totalCancel:" destination="wVe-jT-pWR" eventType="touchUpInside" id="IDq-5O-XGP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYA-ar-lp6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYA-ar-lp6">
                                         <rect key="frame" x="97" y="76" width="62" height="30"/>
                                         <state key="normal" title="全部删除"/>
                                         <connections>
                                             <action selector="totalDelete:" destination="wVe-jT-pWR" eventType="touchUpInside" id="ARy-xr-0cS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-Bq-VVN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJA-Bq-VVN">
                                         <rect key="frame" x="298" y="76" width="62" height="30"/>
                                         <state key="normal" title="添加下载"/>
                                         <connections>
                                             <action selector="addDownloadTask:" destination="wVe-jT-pWR" eventType="touchUpInside" id="kM5-fO-uiN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS7-AK-KdI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS7-AK-KdI">
                                         <rect key="frame" x="298" y="116" width="62" height="30"/>
                                         <state key="normal" title="删除下载"/>
                                         <connections>
@@ -592,7 +591,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRD-wJ-7mm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRD-wJ-7mm">
                                         <rect key="frame" x="97" y="116" width="62" height="30"/>
                                         <state key="normal" title="清空缓存"/>
                                         <connections>
@@ -629,7 +628,7 @@
                                             <action selector="cellularAccess:" destination="wVe-jT-pWR" eventType="valueChanged" id="FuE-uk-dq1"/>
                                         </connections>
                                     </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVb-o7-Yea">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVb-o7-Yea">
                                         <rect key="frame" x="252" y="156" width="108" height="30"/>
                                         <state key="normal" title="按开始时间排序"/>
                                         <connections>
@@ -675,6 +674,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="W2z-3w-a3D"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jFB-em-SdY" firstAttribute="leading" secondItem="W2z-3w-a3D" secondAttribute="leading" id="7eO-TO-Sr6"/>
@@ -685,7 +685,6 @@
                             <constraint firstItem="W2z-3w-a3D" firstAttribute="trailing" secondItem="QJ4-Fj-uru" secondAttribute="trailing" id="TMY-gf-diK"/>
                             <constraint firstItem="QJ4-Fj-uru" firstAttribute="leading" secondItem="W2z-3w-a3D" secondAttribute="leading" id="v1f-uk-SKI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="W2z-3w-a3D"/>
                     </view>
                     <connections>
                         <outlet property="cellularAccessSwitch" destination="1bH-se-Pql" id="lSE-jj-lMQ"/>
@@ -704,7 +703,7 @@
         <!--Download View Controller-->
         <scene sceneID="O5P-xU-gvw">
             <objects>
-                <viewController id="RE7-91-rUf" customClass="DownloadViewController" customModule="Tiercel_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RE7-91-rUf" customClass="DownloadViewController" customModule="Tiercel_iOS_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aXB-9c-ixG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -728,7 +727,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjc-1o-OQq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjc-1o-OQq">
                                         <rect key="frame" x="15" y="76" width="62" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="全部开始"/>
@@ -736,28 +735,28 @@
                                             <action selector="totalStart:" destination="RE7-91-rUf" eventType="touchUpInside" id="hKF-KM-lw7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J44-Pt-OA0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J44-Pt-OA0">
                                         <rect key="frame" x="15" y="116" width="62" height="30"/>
                                         <state key="normal" title="全部暂停"/>
                                         <connections>
                                             <action selector="totalSuspend:" destination="RE7-91-rUf" eventType="touchUpInside" id="UFB-4q-zcf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyd-F6-1FY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyd-F6-1FY">
                                         <rect key="frame" x="15" y="156" width="62" height="30"/>
                                         <state key="normal" title="全部取消"/>
                                         <connections>
                                             <action selector="totalCancel:" destination="RE7-91-rUf" eventType="touchUpInside" id="I9L-wf-1Fd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yu-3B-K7s">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yu-3B-K7s">
                                         <rect key="frame" x="97" y="76" width="62" height="30"/>
                                         <state key="normal" title="全部删除"/>
                                         <connections>
                                             <action selector="totalDelete:" destination="RE7-91-rUf" eventType="touchUpInside" id="I49-AM-Ty7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AJ-RD-vtF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AJ-RD-vtF">
                                         <rect key="frame" x="298" y="116" width="62" height="30"/>
                                         <state key="normal" title="删除下载"/>
                                         <connections>
@@ -770,7 +769,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-w1-kP5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-w1-kP5">
                                         <rect key="frame" x="97" y="116" width="62" height="30"/>
                                         <state key="normal" title="清除文件"/>
                                         <connections>
@@ -842,6 +841,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gTU-LT-a3o"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gTU-LT-a3o" firstAttribute="trailing" secondItem="BI5-Jh-R0c" secondAttribute="trailing" id="6kI-d1-dmZ"/>
@@ -852,7 +852,6 @@
                             <constraint firstItem="Bms-Qo-CB3" firstAttribute="leading" secondItem="gTU-LT-a3o" secondAttribute="leading" id="v6h-jl-0au"/>
                             <constraint firstItem="gTU-LT-a3o" firstAttribute="bottom" secondItem="BI5-Jh-R0c" secondAttribute="bottom" id="xff-rX-dR2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gTU-LT-a3o"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="downloads" id="eQs-RL-Gx1"/>
                     <connections>

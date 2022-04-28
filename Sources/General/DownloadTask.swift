@@ -222,13 +222,14 @@ extension DownloadTask {
         } else {
             if let resumeData = resumeData,
                 cache.retrieveTmpFile(tmpFileName) {
-                if #available(iOS 10.2, *) {
-                    sessionTask = session?.downloadTask(withResumeData: resumeData)
-                } else if #available(iOS 10.0, *) {
-                    sessionTask = session?.correctedDownloadTask(withResumeData: resumeData)
-                } else {
-                    sessionTask = session?.downloadTask(withResumeData: resumeData)
-                }
+                sessionTask = session?.downloadTask(withResumeData: resumeData)
+//                if #available(iOS 10.2, *) {
+//                    sessionTask = session?.downloadTask(withResumeData: resumeData)
+//                } else if #available(iOS 10.0, *) {
+//                    sessionTask = session?.correctedDownloadTask(withResumeData: resumeData)
+//                } else {
+//                    sessionTask = session?.downloadTask(withResumeData: resumeData)
+//                }
             } else {
                 var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 0)
                 if let headers = headers {

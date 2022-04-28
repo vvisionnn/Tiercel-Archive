@@ -8,6 +8,7 @@
 
 import UIKit
 import Tiercel
+import Combine
 
 class ListViewController: UITableViewController {
 
@@ -27,11 +28,22 @@ class ListViewController: UITableViewController {
         ]
     }()
 
+    var receiveTaskSubscription: AnyCancellable!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        receiveTaskSubscription = appDelegate.sessionManager4.tasksPublisher
+            .sink { tasks in
+                debugPrint(tasks.count)
+                tasks.forEach { task in
+                    debugPrint("[\(task.status)] \(task.fileName) - \(task.speedString)")
+                }
+            }
+        
+        debugPrint(receiveTaskSubscription)
+        debugPrint("done")
     }
 
 

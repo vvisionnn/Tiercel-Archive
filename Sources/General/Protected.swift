@@ -26,6 +26,7 @@
 
 
 import Foundation
+import Combine
 
 
 final public class UnfairLock {
@@ -67,7 +68,9 @@ final public class Protected<T> {
     
     private let lock = UnfairLock()
     
-    private var value: T
+    @Published private var value: T
+    
+    public var valuePublisher: AnyPublisher<T, Never> { $value.eraseToAnyPublisher() }
     
     public var wrappedValue: T {
         get { lock.around { value } }

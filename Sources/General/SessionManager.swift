@@ -25,6 +25,7 @@
 //
 
 import UIKit
+import Combine
 
 public class SessionManager {
     
@@ -99,6 +100,12 @@ public class SessionManager {
     
     
     private let protectedState: Protected<State>
+    
+    public var tasksPublisher: AnyPublisher<[DownloadTask], Never> {
+        protectedState.valuePublisher
+            .map(\.tasks)
+            .eraseToAnyPublisher()
+    }
 
     public var logger: Logable {
         get { protectedState.wrappedValue.logger }
@@ -749,7 +756,7 @@ extension SessionManager {
     internal func updateProgress() {
         if isControlNetworkActivityIndicator {
             DispatchQueue.tr.executeOnMain {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//                UIApplication.shared.isNetworkActivityIndicatorVisible = true
             }
         }
         progressExecuter?.execute(self)
@@ -777,7 +784,7 @@ extension SessionManager {
     internal func determineStatus(fromRunningTask: Bool) {
         if isControlNetworkActivityIndicator {
             DispatchQueue.tr.executeOnMain {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
 
